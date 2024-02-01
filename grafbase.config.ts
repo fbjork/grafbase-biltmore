@@ -6,7 +6,7 @@ const etix = connector.OpenAPI("Etix", {
   url: "https://api.etix.com/v3/",
   schema: "https://api.etix.com/v3/openapi.json",
   headers: (headers) => {
-    headers.set("Authorization", "Bearer " + g.env("ETIX_API_KEY"));
+    headers.set("Authorization", { forward: "Authorization" });
   },
   transforms: (schema) => {
     schema.exclude("Mutation.*");
